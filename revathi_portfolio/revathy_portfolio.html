@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revathy S — UI/UX Designer</title>
+  <meta name="description"
+    content="Revathy S — UI/UX Designer based in Kollam, Kerala. Figma, UX Research, Wireframing, High-Fidelity UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rose: #e8507a;
+      --rose-light: #f07a9a;
+      --rose-soft: rgba(232, 80, 122, 0.1);
+      --rose-glow: rgba(232, 80, 122, 0.12);
+      --navy-dark: #1a0d15;
+      --white: #ffffff;
+      --off-white: #fdf8fa;
+      --gray-50: #f5f0f3;
+      --gray-100: #ecdde5;
+      --border: rgba(232, 80, 122, 0.13);
+      --border-hover: rgba(232, 80, 122, 0.28);
+      --text-primary: #1f1018;
+      --text-secondary: #5a3d4a;
+      --text-muted: #9a7585;
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --section-pad: clamp(5rem, 10vw, 8rem);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 20px rgba(232, 80, 122, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--rose);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      background: var(--rose) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem !important;
+      border-radius: 8px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--rose-light) !important;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--gray-50);
+    }
+
+    .mobile-menu a:last-child {
+      border: none;
+      background: var(--rose);
+      color: var(--white);
+      text-align: center;
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 68px clamp(1.5rem, 5vw, 4rem) 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(232, 80, 122, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(232, 80, 122, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-blob {
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(232, 80, 122, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(232, 80, 122, 0.07);
+      border: 1px solid rgba(232, 80, 122, 0.2);
+      color: var(--rose);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .6;
+        transform: scale(1.3)
+      }
+    }
+
+    .hero-heading {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-heading em {
+      font-style: normal;
+      color: var(--rose);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--rose);
+      color: var(--white);
+      padding: 0.8rem 1.75rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--rose-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      color: var(--text-primary);
+      padding: 0.8rem 1.75rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--gray-100);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--rose);
+      background: var(--rose-glow);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .hero-stat-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 340px;
+      height: 420px;
+    }
+
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #fce8ef 0%, #f5c8d8 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 1;
+      border: 2px dashed rgba(232, 80, 122, 0.25);
+    }
+
+    .hero-photo-placeholder p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-photo-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: calc(var(--radius) + 8px);
+      border: 2px solid rgba(232, 80, 122, 0.15);
+      z-index: 0;
+    }
+
+    .hero-tag {
+      position: absolute;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      box-shadow: 0 4px 16px rgba(232, 80, 122, 0.1);
+      z-index: 2;
+    }
+
+    .hero-tag-figma {
+      bottom: 30px;
+      left: -40px;
+    }
+
+    .hero-tag-open {
+      top: 30px;
+      right: -40px;
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--rose);
+      flex-shrink: 0;
+    }
+
+    .tag-dot.green {
+      background: #4ade80;
+    }
+
+    /* LAYOUT */
+    section {
+      padding: var(--section-pad) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--rose);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    /* SERVICES */
+    #services {
+      background: var(--off-white);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      gap: 2rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .service-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(232, 80, 122, 0.08);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--rose-soft);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.65rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* WORK */
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      gap: 2rem;
+    }
+
+    .work-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .work-item-featured {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      transition: border-color var(--transition);
+    }
+
+    .work-item-featured:hover {
+      border-color: var(--border-hover);
+    }
+
+    .work-item-featured .work-img {
+      aspect-ratio: 16/10;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #fce8ef 0%, #f5c8d8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-img-placeholder {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .work-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      background: var(--rose-soft);
+      color: var(--rose);
+    }
+
+    .work-info h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.7rem;
+      line-height: 1.3;
+    }
+
+    .work-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-bottom: 2px solid var(--text-primary);
+      padding-bottom: 1px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .work-link:hover {
+      color: var(--rose);
+      border-color: var(--rose);
+    }
+
+    .work-small-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .work-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .work-card .work-img {
+      aspect-ratio: 16/9;
+      background: linear-gradient(145deg, #fce8ef 0%, #f5c8d8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-card .work-info {
+      padding: 1.25rem;
+    }
+
+    .work-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .work-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--off-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #fce8ef 0%, #f5c8d8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed rgba(232, 80, 122, 0.2);
+    }
+
+    .about-photo p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .about-card-float {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      min-width: 180px;
+      box-shadow: 0 8px 32px rgba(232, 80, 122, 0.1);
+    }
+
+    .about-card-float .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .about-card-float .value {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .about-body p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .stack-chip {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      background: var(--rose-soft);
+      border: 1px solid rgba(232, 80, 122, 0.18);
+      color: var(--rose);
+    }
+
+    /* SKILL BARS */
+    .skills-section {
+      margin-top: 2rem;
+    }
+
+    .skills-section h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .skill-bar {
+      margin-bottom: 0.9rem;
+    }
+
+    .skill-bar-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-bar-top span:first-child {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .skill-bar-top span:last-child {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .skill-track {
+      height: 5px;
+      background: var(--gray-100);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--rose), var(--rose-light));
+      border-radius: 100px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .skill-fill.animated {
+      transform: scaleX(1);
+    }
+
+    /* EXPERIENCE */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .exp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      position: relative;
+      transition: border-color var(--transition);
+    }
+
+    .exp-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.5rem;
+      bottom: 1.5rem;
+      width: 3px;
+      background: var(--rose);
+      border-radius: 0 3px 3px 0;
+      opacity: 0.6;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .exp-company {
+      font-size: 0.85rem;
+      color: var(--rose);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .exp-period {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--gray-50);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--rose);
+      font-size: 0.75rem;
+      top: 0.1rem;
+    }
+
+    /* REVIEWS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color var(--transition);
+    }
+
+    .review-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .review-stars {
+      color: #fbbf24;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), #f07a9a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .reviewer-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .reviewer-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* BLOG */
+    #blog {
+      background: var(--off-white);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .blog-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .blog-img {
+      aspect-ratio: 16/9;
+      background: linear-gradient(145deg, #fce8ef 0%, #f5c8d8 100%);
+      overflow: hidden;
+    }
+
+    .blog-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card:hover .blog-img img {
+      transform: scale(1.04);
+    }
+
+    .blog-body {
+      padding: 1.25rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-cat {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .blog-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .blog-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .blog-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--rose);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: gap var(--transition);
+    }
+
+    .read-more:hover {
+      gap: 0.5rem;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    #contact .section-eyebrow {
+      color: var(--rose-light);
+    }
+
+    #contact .section-eyebrow::before {
+      background: var(--rose-light);
+    }
+
+    #contact .section-title {
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+    }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color var(--transition);
+      word-break: break-all;
+    }
+
+    .contact-link:hover {
+      color: var(--rose-light);
+    }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-group label span {
+      color: var(--rose-light);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      outline: none;
+      resize: none;
+      transition: border-color var(--transition);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--rose);
+      background: rgba(232, 80, 122, 0.08);
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--rose);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.9rem 2rem;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      align-self: flex-start;
+    }
+
+    .form-submit:hover {
+      background: var(--rose-light);
+      transform: translateY(-2px);
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      color: #4ade80;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.83rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    footer a:hover {
+      color: var(--rose-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-inner,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero-photo-wrap {
+        width: 260px;
+        height: 320px;
+        margin: 0 auto;
+      }
+
+      .hero-tag-figma {
+        left: -10px;
+        bottom: 10px;
+      }
+
+      .hero-tag-open {
+        right: -10px;
+        top: 10px;
+      }
+
+      .work-item-featured {
+        grid-template-columns: 1fr;
+      }
+
+      .services-header,
+      .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about-card-float {
+        right: 0;
+        bottom: -1rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">revathy<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact" class="nav-cta">Hire me →</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#work" onclick="closeMobile()">Work</a>
+    <a href="#experience" onclick="closeMobile()">Experience</a>
+    <a href="#reviews" onclick="closeMobile()">Reviews</a>
+    <a href="#blog" onclick="closeMobile()">Blog</a>
+    <a href="#contact" onclick="closeMobile()">Hire me →</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-blob"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">Available for projects</div>
+        <h1 class="hero-heading">
+          Hi, I'm <em>Revathy</em><br />
+          UI/UX<br />Designer
+        </h1>
+        <p class="hero-sub">
+          I transform user insights into beautiful, intuitive interfaces — from wireframes to pixel-perfect
+          high-fidelity designs that solve real problems and delight users.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">View my work →</a>
+          <a href="https://www.behance.net/revathyRRdesigns" target="_blank" class="btn-outline">Behance ↗</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">10+</div>
+            <div class="hero-stat-label">Projects done</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">2+</div>
+            <div class="hero-stat-label">Years exp.</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">5★</div>
+            <div class="hero-stat-label">Client rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-placeholder">
+            <img src="images/Gemini_Generated_Image_smt4resmt4resmt4.png" alt="Revathy S — UI/UX Designer"
+              style="width:100%; height:100%; object-fit:cover; object-position:center; border-radius:16px;" />
+            <svg width="58" height="58" viewBox="0 0 64 64" fill="none" opacity="0.35">
+              <circle cx="32" cy="24" r="12" stroke="#e8507a" stroke-width="2" />
+              <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#e8507a" stroke-width="2"
+                stroke-linecap="round" />
+            </svg>
+
+          </div>
+          <div class="hero-photo-ring"></div>
+          <div class="hero-tag hero-tag-figma">
+            <div class="tag-dot"></div>
+            Figma Expert
+          </div>
+          <div class="hero-tag hero-tag-open">
+            <div class="tag-dot green"></div>
+            Open to work
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <p class="section-eyebrow">What I do</p>
+          <h2 class="section-title">Services</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon">🔍</div>
+          <h3>UX Research</h3>
+          <p>User interviews, competitive analysis, and requirement analysis to translate business needs into design
+            decisions that actually solve user problems.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🗂️</div>
+          <h3>Wireframing & User Flows</h3>
+          <p>Lo-fi to hi-fi wireframes and annotated user flows that map out every screen and interaction before a
+            single colour is chosen.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🎨</div>
+          <h3>High-Fidelity UI Design</h3>
+          <p>Pixel-perfect Figma designs with reusable components, consistent design systems, and auto-layout — ready
+            for accurate developer handoff.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">📱</div>
+          <h3>Responsive Web Design</h3>
+          <p>Adaptive layouts for web and mobile that maintain visual consistency and usability across every screen
+            size, following modern UI standards.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">⚡</div>
+          <h3>Interactive Prototyping</h3>
+          <p>Clickable Figma prototypes that simulate real flows — ideal for stakeholder walkthroughs, usability
+            testing, and developer alignment.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🤝</div>
+          <h3>Developer Handoff</h3>
+          <p>Structured, annotated design files with spacing specs, component notes, and style tokens that make
+            implementation smooth and accurate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="work-header">
+        <div>
+          <p class="section-eyebrow">Portfolio</p>
+          <h2 class="section-title">Selected work</h2>
+        </div>
+        <a href="https://www.behance.net/revathyRRdesigns" target="_blank" class="work-link">View on Behance →</a>
+      </div>
+      <div class="work-grid">
+        <!-- Featured -->
+        <div class="work-item-featured fade-up">
+          <div class="work-img">
+            <div class="work-img-placeholder">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" opacity="0.4">
+                <rect x="4" y="10" width="44" height="32" rx="4" stroke="#e8507a" stroke-width="2" />
+                <path d="M4 20h44" stroke="#e8507a" stroke-width="1.5" />
+                <rect x="10" y="27" width="12" height="9" rx="2" fill="#e8507a" opacity="0.5" />
+                <rect x="26" y="27" width="16" height="3.5" rx="1.5" fill="#e8507a" opacity="0.35" />
+                <rect x="26" y="32.5" width="11" height="3.5" rx="1.5" fill="#e8507a" opacity="0.2" />
+              </svg>
+              <span>Add project screenshot here</span>
+            </div>
+          </div>
+          <div class="work-info">
+            <div class="work-tags">
+              <span class="tag">Figma</span>
+              <span class="tag">UX Research</span>
+              <span class="tag">Redesign</span>
+              <span class="tag">Responsive</span>
+            </div>
+            <h3>Techolas Technologies — Website Redesign</h3>
+            <p>Redesigned the company website end-to-end to improve visual consistency, usability, and user engagement.
+              Involved requirement analysis, wireframing, high-fidelity UI design, and close collaboration with
+              developers for smooth, accurate implementation.</p>
+            <a href="https://www.behance.net/revathyRRdesigns" target="_blank" class="work-link">View on Behance →</a>
+          </div>
+        </div>
+
+        <div class="work-small-grid">
+          <div class="work-card fade-up">
+            <div class="work-img">
+              <div class="work-img-placeholder">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity="0.4">
+                  <rect x="8" y="2" width="24" height="36" rx="4" stroke="#e8507a" stroke-width="1.5" />
+                  <circle cx="20" cy="16" r="5" stroke="#e8507a" stroke-width="1.5" />
+                  <circle cx="20" cy="30" r="2" fill="#e8507a" opacity="0.5" />
+                  <path d="M12 24c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#e8507a" stroke-width="1.5"
+                    stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <div class="work-tags"><span class="tag">Mobile App</span><span class="tag">UX/UI</span><span
+                  class="tag">Figma</span></div>
+              <h3>EV Hub — Electric Charging Station App</h3>
+              <p>Mobile app to help users locate nearby EV charging stations with real-time availability, map
+                integration, and a seamless booking flow.</p>
+              <a href="https://www.behance.net/revathyRRdesigns" target="_blank" class="work-link">View case study →</a>
+            </div>
+          </div>
+          <div class="work-card fade-up">
+            <div class="work-img">
+              <div class="work-img-placeholder">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity="0.4">
+                  <rect x="2" y="6" width="36" height="28" rx="4" stroke="#e8507a" stroke-width="1.5" />
+                  <path d="M2 15h36" stroke="#e8507a" stroke-width="1.5" />
+                  <rect x="7" y="20" width="11" height="9" rx="2" fill="#e8507a" opacity="0.45" />
+                  <rect x="22" y="20" width="11" height="4" rx="2" fill="#e8507a" opacity="0.3" />
+                  <rect x="22" y="26" width="7" height="3" rx="1.5" fill="#e8507a" opacity="0.2" />
+                </svg>
+              </div>
+            </div>
+            <div class="work-info">
+              <div class="work-tags"><span class="tag">Responsive</span><span class="tag">UI Design</span></div>
+              <h3>Digital Marketing Agency — Website</h3>
+              <p>Designed a responsive website for a digital marketing company, focusing on user-centric layouts and
+                clear service communication across devices.</p>
+              <a href="https://www.behance.net/revathyRRdesigns" target="_blank" class="work-link">View case study →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo-wrap fade-up">
+          <div class="about-photo">
+            <img src="images/WhatsApp Image 2026-06-24 at 12.14.19 PM.jpeg"
+              style="width:100%; height: 100%; object-fit:cover; border-radius:16px; position:relative;" />
+          </div>
+          <div class="about-card-float">
+            <div class="label">Based in</div>
+            <div class="value">Kollam, Kerala 🇮🇳</div>
+          </div>
+        </div>
+        <div class="about-body fade-up">
+          <p class="section-eyebrow">About me</p>
+          <h2 class="section-title">A bit about<br />who I am</h2>
+          <p>I'm Revathy S, a UI/UX Designer with a B.Tech in Computer Science from Kerala Technical University
+            (2020–2024). I have hands-on experience covering user research, wireframing, and high-fidelity UI design
+            across real-world product projects.</p>
+          <p>Currently working as a Junior UI/UX Designer at Techolas Technologies Pvt Ltd, where I design responsive
+            websites and product interfaces that balance beauty with usability. Previously interned at Techmindz (NDZ,
+            Cochin).</p>
+          <p>I'm strongly driven by problem-solving, clarity, and creating meaningful user experiences — with a keen
+            interest in continuous growth and contributing value to product-driven teams.</p>
+
+          <div class="skills-section" id="skillsSection">
+            <h4>Core skills</h4>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Figma</span><span>90%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width:90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>UI Visual Design</span><span>88%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width:88%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Wireframing</span><span>85%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width:85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>UX Research</span><span>82%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width:82%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-top"><span>Responsive Web Design</span><span>80%</span></div>
+              <div class="skill-track">
+                <div class="skill-fill" style="width:80%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack-list">
+            <span class="stack-chip">Figma</span>
+            <span class="stack-chip">HTML</span>
+            <span class="stack-chip">CSS</span>
+            <span class="stack-chip">JavaScript</span>
+            <span class="stack-chip">UX Research</span>
+            <span class="stack-chip">Wireframing</span>
+            <span class="stack-chip">Prototyping</span>
+            <span class="stack-chip">Concept Sketching</span>
+            <span class="stack-chip">Accessibility</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div style="margin-bottom:3rem">
+        <p class="section-eyebrow">Career</p>
+        <h2 class="section-title">Experience &amp; education</h2>
+      </div>
+      <div class="exp-list">
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">Junior UI/UX Designer</div>
+              <div class="exp-company">Techolas Technologies Pvt Ltd</div>
+            </div>
+            <span class="exp-period">July 2025 – Present</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Redesigned the company website to improve visual consistency, usability, and user engagement.</li>
+            <li>Designed responsive websites for a software development company and a digital marketing company,
+              focusing on user-centric layouts and modern UI standards.</li>
+            <li>Conducted requirement analysis and translated business needs into wireframes, user flows, high-fidelity
+              UI designs, and interactive prototypes.</li>
+            <li>Collaborated with developers for smooth design handoff and accurate implementation.</li>
+            <li>Ensured designs followed consistency, accessibility, and usability principles across all projects.</li>
+          </ul>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">UI/UX Designer Intern</div>
+              <div class="exp-company">Techmindz powered by NDZ — Cochin, Kerala</div>
+            </div>
+            <span class="exp-period">Jan 2025 – Jul 2025</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Worked on real-world design projects under mentorship, gaining hands-on experience in end-to-end UX
+              processes.</li>
+            <li>Created wireframes, user flows, and high-fidelity prototypes in Figma for web and mobile interfaces.
+            </li>
+            <li>Collaborated with senior designers and developers to iterate on designs based on feedback and usability
+              testing.</li>
+            <li>Earned certification upon completion of the programme.</li>
+          </ul>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">B.Tech — Computer Science &amp; Engineering</div>
+              <div class="exp-company">Kerala Technical University</div>
+            </div>
+            <span class="exp-period">2020 – 2024</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Graduated with a foundation in computer science, algorithms, and software development that informs a
+              developer-empathetic approach to design.</li>
+            <li>Final-year project focused on human-computer interaction and mobile interface design.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem">
+        <p class="section-eyebrow" style="justify-content:center">Social proof</p>
+        <h2 class="section-title">What clients say</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Revathy completely transformed our company website. The redesign was clean, modern,
+            and immediately improved how visitors navigated our services. She communicated proactively every step of the
+            way."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">AK</div>
+            <div>
+              <div class="reviewer-name">Arun Kumar</div>
+              <div class="reviewer-role">CEO, Techolas Technologies</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The EV Hub app design was exceptional — intuitive, clean, and perfectly aligned with
+            what our users needed. Revathy's research-first approach made a real difference to the final product
+            quality."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">SM</div>
+            <div>
+              <div class="reviewer-name">Sana Mehta</div>
+              <div class="reviewer-role">Product Manager, GreenDrive</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"She delivered our marketing site redesign with zero back-and-forth. The Figma handoff
+            was so well-structured that our developers implemented it without a single question. Really impressive
+            work."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:linear-gradient(135deg,#34d399,#059669)">RN</div>
+            <div>
+              <div class="reviewer-name">Rahul Nair</div>
+              <div class="reviewer-role">Founder, DigitalCraft Agency</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="container">
+      <div class="work-header">
+        <div>
+          <p class="section-eyebrow">Thoughts</p>
+          <h2 class="section-title">From the blog</h2>
+        </div>
+        <a href="#" class="work-link">All articles →</a>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card fade-up">
+          <div class="blog-img">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=75" alt="Figma tips"
+              loading="lazy" />
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Figma</span><span>·</span><span class="blog-date">Jun 10,
+                2025</span></div>
+            <h3>5 Figma auto-layout tricks that save me hours every week</h3>
+            <p>The auto-layout features most designers overlook — and how they make responsive design handoff almost
+              effortless.</p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+        </div>
+        <div class="blog-card fade-up">
+          <div class="blog-img">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=75" alt="UX Research"
+              loading="lazy" />
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">UX Research</span><span>·</span><span class="blog-date">May 3,
+                2025</span></div>
+            <h3>How I run user interviews when I have no research budget</h3>
+            <p>Practical guerrilla research methods that still generate real insights — no labs, no incentives, no
+              problem.</p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+        </div>
+        <div class="blog-card fade-up">
+          <div class="blog-img">
+            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=600&q=75" alt="Developer handoff"
+              loading="lazy" />
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Handoff</span><span>·</span><span class="blog-date">Mar 20,
+                2025</span></div>
+            <h3>The handoff checklist I use before every developer meeting</h3>
+            <p>What to verify, annotate, and communicate before sharing Figma files — so implementation gaps don't
+              happen.</p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-eyebrow">Get in touch</p>
+          <h2 class="section-title">Let's work<br />together</h2>
+          <p>I'm open to UI/UX design projects — websites, mobile apps, or product redesigns. Let's discuss how I can
+            help bring your vision to life.</p>
+          <div class="contact-links">
+            <a href="mailto:revathyranganath00@gmail.com" class="contact-link">
+              <div class="contact-link-icon">✉️</div>
+              revathyranganath00@gmail.com
+            </a>
+            <a href="tel:+917306289390" class="contact-link">
+              <div class="contact-link-icon">📞</div>
+              +91 73062 89390
+            </a>
+            <a href="https://www.linkedin.com/in/revathy-s-833783276" target="_blank" class="contact-link">
+              <div class="contact-link-icon">💼</div>
+              linkedin.com/in/revathy-s-833783276
+            </a>
+            <a href="https://www.behance.net/revathyRRdesigns" target="_blank" class="contact-link">
+              <div class="contact-link-icon">🎨</div>
+              behance.net/revathyRRdesigns
+            </a>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Name <span>*</span></label>
+                <input type="text" id="fname" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="femail">Email <span>*</span></label>
+                <input type="email" id="femail" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="Website redesign, app UI, collaboration…" />
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Message <span>*</span></label>
+              <textarea id="fmessage" name="message" rows="5" placeholder="Tell me about your project…"
+                required></textarea>
+            </div>
+            <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you within 24 hours.</div>
+            <button type="submit" class="form-submit" id="submitBtn">Send message →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Revathy S. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <span>Designed with ❤️ in Kerala</span>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.skill-fill').forEach(bar => bar.classList.add('animated'));
+          skillObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    const ss = document.getElementById('skillsSection');
+    if (ss) skillObserver.observe(ss);
+
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const success = document.getElementById('formSuccess');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      setTimeout(() => { btn.style.display = 'none'; success.style.display = 'block'; form.reset(); }, 1200);
+    });
+  </script>
+</body>
+
+</html>
